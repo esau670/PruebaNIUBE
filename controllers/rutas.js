@@ -37,6 +37,7 @@ async function uno (req, res,next){
     } 
 };
 
+/*
 //agregar registro
 async function agregar (req, res,next){
     try{
@@ -46,34 +47,30 @@ async function agregar (req, res,next){
         //respuestas.error(req,res, err, 201)
         next(err)
     } 
-};
+};*/
 
-/*
-// Agregar registro con validación directa
+
+
+// Agregar con validacion de edad, nombre y apellido
 async function agregar(req, res, next) {
     try {
-        // Validar los datos enviados
-        const { nombre, apellido, edad } = req.body;
-
-        // Verificar que los campos obligatorios estén presentes
-        if (!nombre || !apellido || !edad) {
-            return respuestas.error(req, res, 'Nombre, apellido y edad son obligatorios.', 400);
+        // nombre, apellido y edad correctos
+        const { NOMBRE, APELLIDO, EDAD } = req.body; 
+        if (!NOMBRE || !APELLIDO || !EDAD) {
+            return respuestas.error(req, res, 'Los campos nombre, apellido y edad son obligatorios', 400);
         }
-
-        // Verificar que la edad sea un número válido mayor a 0
-        if (typeof edad !== 'number' || edad <= 0) {
-            return respuestas.error(req, res, 'La edad debe ser un número mayor a 0.', 400);
+        if (isNaN(EDAD) || EDAD <= 0) {
+            return respuestas.error(req, res, 'La edad debe ser un número mayor a 0', 400);
         }
-
-        // Pasar los datos al controlador si son válidos
+        // agregar si campos estan correctos
         const items = await controlador.agregar(req.body);
         respuestas.success(req, res, 'Agregado satisfactoriamente!', 201);
     } catch (err) {
-        // Manejo de errores
         next(err);
     }
 };
-*/
+
+
 
 
 //actualizar registro

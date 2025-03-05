@@ -11,7 +11,7 @@ function uno(id){
     return db.uno(TABLA, id);
 } 
 
-function agregar(body){
+function agregar(body){ 
     return db.agregar(TABLA, body);
 } 
 
