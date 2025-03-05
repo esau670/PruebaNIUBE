@@ -37,6 +37,7 @@ async function uno (req, res,next){
     } 
 };
 
+
 /*
 //agregar registro
 async function agregar (req, res,next){
@@ -48,7 +49,6 @@ async function agregar (req, res,next){
         next(err)
     } 
 };*/
-
 
 
 // Agregar con validacion de edad, nombre y apellido
@@ -67,7 +67,7 @@ async function agregar(req, res, next) {
         respuestas.success(req, res, 'Agregado satisfactoriamente!', 201);
     } catch (err) {
         next(err);
-    }
+    } 
 };
 
 
